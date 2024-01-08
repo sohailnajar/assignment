@@ -34,12 +34,13 @@ def print_security_group_details(security_groups):
         print("\n" + "-" * 50 + "\n")
 
 
-region_name = 'eu-central-1'
+if __name__ == "__main__":
+    region_name = 'eu-central-1'
 
-insecure_security_groups = get_insecure_security_groups(region_name)
+    insecure_security_groups = get_insecure_security_groups(region_name)
 
-if insecure_security_groups:
-    print("Security groups with overly permissive inbound rules:")
-    print_security_group_details(insecure_security_groups)
-else:
-    print("No security groups with overly permissive inbound rules found.")
+    if insecure_security_groups:
+        print("Security groups with overly permissive inbound rules:")
+        print_security_group_details(insecure_security_groups)
+    else:
+        print("No security groups with overly permissive inbound rules found.")

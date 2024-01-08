@@ -27,13 +27,13 @@ def print_security_group_details(security_groups):
 
         print("\n" + "-" * 50 + "\n")
 
+if __name__ == "__main__":
+    region_name = 'eu-central-1'
 
-region_name = 'eu-central-1'
+    security_groups = list_security_groups(region_name)
 
-security_groups = list_security_groups(region_name)
-
-if security_groups:
-    print(f"All security groups in {region_name}:")
-    print_security_group_details(security_groups)
-else:
-    print("No security groups found.")
+    if security_groups:
+        print(f"All security groups in {region_name}:")
+        print_security_group_details(security_groups)
+    else:
+        print("No security groups found.")

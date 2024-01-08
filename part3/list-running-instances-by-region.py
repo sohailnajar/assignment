@@ -5,7 +5,6 @@ def list_running_instances(region_name):
     ec2_client = boto3.client('ec2', region_name=region_name)
 
 
-    # Use describe_instances to get a list of all instances with 'running' state
     response = ec2_client.describe_instances(Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
 
     running_instances = []
@@ -23,9 +22,9 @@ def print_instance_details(instances):
 
         print(f"Instance ID: {instance_id}, State: {state}")
 
-# Example usage
-region_name = 'eu-central-1'
+if __name__ == "__main__":
+    region_name = 'eu-central-1'
 
-running_instances = list_running_instances(region_name)
-print(f"Running instances in {region_name}:")
-print_instance_details(running_instances)
+    running_instances = list_running_instances(region_name)
+    print(f"Running instances in {region_name}:")
+    print_instance_details(running_instances)
